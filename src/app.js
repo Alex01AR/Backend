@@ -1,4 +1,4 @@
-import express from "express"
+import express, { json } from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 const app = express()
@@ -21,6 +21,11 @@ app.use(cookieParser())
 
 import router from "./routes/user.routes.js"
 //routes declaration 
+// app.use(express.json());
+
+
+
+
 app.use("/api/v1/users",router)
 
 
