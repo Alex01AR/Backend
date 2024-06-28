@@ -1,5 +1,6 @@
 import { ApiError } from "../utils/apierror.js"
-import { asynchandler } from "../utils/asynchandler.js"
+// import { asynchandler } from "../utils/asynchandler.js"
+import {asynchandler }from "../utils/asynchandler.js"
 import { User } from "../models/user.model.js"
 import { cloudinary } from "../utils/cloudinary.js"
 import { Apiresponse } from "../utils/Apiresponse.js"
@@ -9,7 +10,8 @@ const registerUser = asynchandler(async (req, res) => {
 
 
   const { fullName, email, username, password } = req.body
-  console.log("email: ", email);
+
+  // console.log("email: ", email);
 
   // if(fullName === ""){
   //   throw new ApiError(400,"FULLNMAE IS REQUIRED")
@@ -20,9 +22,9 @@ const registerUser = asynchandler(async (req, res) => {
     
   )
   {
-    throw new ApiError(400, "AllIS REQUIRED")
+    throw new ApiError(400, "All IS REQUIRED")
   }
-  const existedUser = User.findOne({$or:[{username} , {email}]
+  const existedUser =await User.findOne({$or:[{username} , {email}]
 
 })
 if(existedUser){
@@ -45,7 +47,7 @@ if(!avatar){
 }
 
 const user = await User.create({
-  fullname:fullName,
+  fullName,
   avatar:avatar.url,
   coverimage:coverimg?.url || "",
   email,
