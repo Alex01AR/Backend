@@ -9,7 +9,7 @@ import { Apiresponse } from "../utils/Apiresponse.js"
 const registerUser = asynchandler(async (req, res) => {
 
 
-  const { fullName, email, username, password } = req.body
+   const { fullName, email, username, password } =   req.body
 
   // console.log("email: ", email);
 
